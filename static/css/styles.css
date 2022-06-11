@@ -5,6 +5,16 @@
     padding: 10px;
     text-align: center;
 }
+.body{
+    text-align: center;
+}
+.post{
+    margin: auto;
+    width: 40%; 
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+}
 #map {
     height: 400px;
     /* The height is 400 pixels */
