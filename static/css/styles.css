@@ -15,6 +15,7 @@
     padding: 10px;
     text-align: center;
 }
+
 #map {
     height: 400px;
     /* The height is 400 pixels */
@@ -30,6 +31,19 @@ ul {
   
 li {
     float: left;
+}
+ri{
+    float: right;
+}
+ri a{
+    display:block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+ri a:hover {
+    background-color: blue;
 }
 li a {
     display: block;
