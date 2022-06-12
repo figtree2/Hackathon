@@ -7,11 +7,15 @@ import requests
 import os
 import pathlib
 import uuid
-
+import pymongo
+from pymongo import MongoClient
 app = Flask('app')
 app.config['SESSION_TYPE'] = 's e c r e t'
 app.secret_key = 's e c r e t'
 
+cluster = MongoClient("mongodb+srv://figtree:1234@cluster0.j0ptd.mongodb.net/?retryWrites=true&w=majority")
+db = cluster["Cluster0"]
+collection = db["Posts"]
 
 #allow oauth without secure website
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = "1"
@@ -35,8 +39,12 @@ def login_is_required(function):
     return wrapper
 
 
-@app.route("/")
+@app.route("/", methods = ["POST"])
 def index():
+    post_title = request.form.get("postTitle")
+    post_content = request.form.get("postContent")
+    post = {"title": post_title, "content": post_content}
+    collection.insert_one(post)
     return render_template("index.html")
 
 @app.route("/about.html")
@@ -95,22 +103,9 @@ def logout():
     session.clear()
     return redirect("/")
 
-def get_database():
-    from pymongo import MongoClient
-    import pymongo
 
-    # Provide the mongodb atlas url to connect python to mongodb using pymongo
-    CONNECTION_STRING = "mongodb+srv://figtree:1234@cluster0.j0ptd.mongodb.net/?retryWrites=true&w=majority"
-
-    # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
-    from pymongo import MongoClient
-    client = MongoClient(CONNECTION_STRING)
-
-    # Create the database for our example (we will use the same database throughout the tutorial
-    return client['Cluster0']
 
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-    dbname = get_database()
