@@ -39,6 +39,10 @@ def login_is_required(function):
 def index():
     return render_template("index.html")
 
+@app.route("/about.html")
+def about():
+    return render_template("about.html")
+
 @app.route("/account")
 def account():
     return render_template("account.html", session=session)
@@ -80,7 +84,7 @@ def protected_area():
     print(session["name"])
     print(session["google_id"])
     print(session["email"])
-    return redirect("/")
+    return redirect("/")    
 
 @app.route("/logout")
 def logout():
