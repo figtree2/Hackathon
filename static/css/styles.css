@@ -90,6 +90,9 @@ h1 {
 p {
     color: white;
 }
+.active {
+    background-color: rgb(161, 161, 201);
+}
 .aboutText {
     display: block;
     padding-top: 20px;
