@@ -56,8 +56,11 @@ def index():
         for word in words:
             url += "%20" + word
         response = requests.request("GET", url, headers=headers)
-        latitude = response.json()['locations'][0]['referencePosition']['latitude']
-        longitude = response.json()['locations'][0]['referencePosition']['longitude']
+        try:
+            latitude = response.json()['locations'][0]['referencePosition']['latitude']
+            longitude = response.json()['locations'][0]['referencePosition']['longitude']
+        except:
+            return render_template('index.html', wrong=True)
         obj = []
         for document in collection.find():
             if (abs(document['latitude'] - latitude) < 0.2) and (abs(document['longitude'] - longitude) < 0.2):
@@ -78,13 +81,15 @@ def posts():
         post_address = request.form.get("address")
         url = "https://api.myptv.com/geocoding/v1/locations/by-address?street="
         words = post_address.split()
-        url += words[0]
-        words.pop(0)
+        url += words.pop(0)
         for word in words:
             url += "%20" + word
         response = requests.request("GET", url, headers=headers)
-        latitude = response.json()['locations'][0]['referencePosition']['latitude']
-        longitude = response.json()['locations'][0]['referencePosition']['longitude']
+        try:
+            latitude = response.json()['locations'][0]['referencePosition']['latitude']
+            longitude = response.json()['locations'][0]['referencePosition']['longitude']
+        except:
+            return render_template('posts.html', wrong=True)
         post = {"_id": str(uuid.uuid4()), "title": post_title, "content": post_content, "address": post_address, "latitude": latitude, "longitude": longitude}
         collection.insert_one(post)
         return redirect('/posts.html')

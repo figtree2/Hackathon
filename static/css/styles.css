@@ -348,3 +348,18 @@ body {
     align-items: center;
     margin-top: 10rem;
 }
+
+.post-thing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 4rem;
+  align-items: center;
+}
+
+.post-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1em;
+}

@@ -34,6 +34,9 @@
           <input type="text" type="address" name="address" id="address" required>
           <label for="address">Street Address</label>
         </div>
+        {% if wrong %} 
+        <p style="color: red;">Use a real address</p>
+        {% endif %}
 
         <a href="#">
           <input style="background: transparent; color: white; border: none;" type="submit" value="Post">

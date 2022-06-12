@@ -39,12 +39,22 @@
                 placeholder="Address" cols="45">
         </form>
 
+        {% if wrong %}
+        <p style="color: red;">Use a real address</p>
+        {% endif %}
+
+
         {% if active %}
-        <p>{{latitude}}</p>
-        <p>{{longitude}}</p>
-        {% for thing in obj %}
-        <p>{{thing}}</p>
-        {% endfor %}
+        <div class="post-thing">
+            <h1>Posts Near You:</h1>
+            {% for thing in obj %}
+            <div class="post-box">
+                <h1>{{thing['title']}}</h1>
+                <p>{{thing['content']}}</p>
+                <p>Address: {{thing['address']}}</p>
+            </div>
+            {% endfor %}
+        </div>
         {% endif %}
         <script src="../static/js/index.js"></script>
     </div>
