@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/figtree2/Hackathon#readme",
   "dependencies": {
+    "bootstrap": "^5.2.0-beta1",
     "flask": "^0.2.10"
   }
 }

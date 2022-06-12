@@ -43,6 +43,10 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route("/login.html")
+def login():
+    return render_template("login.html")
+
 @app.route("/account")
 def account():
     return render_template("account.html", session=session)
@@ -104,6 +108,8 @@ def get_database():
 
     # Create the database for our example (we will use the same database throughout the tutorial
     return client['Cluster0']
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
