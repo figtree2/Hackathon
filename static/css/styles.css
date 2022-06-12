@@ -4,6 +4,7 @@
     border: 3px solid black;
     padding: 0px;
     text-align: center;
+    position: relative;
 }
 .body{
     text-align: center;
@@ -16,6 +17,22 @@
     text-align: center;
 }
 
+#entCoords{
+    z-index: 9;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    width: 200px;
+    height: 75px;
+    position: absolute;
+    bottom: 0px;
+    background-color: bisque;
+    border: 1px solid black;
+}
+#coordinates{
+    box-sizing: content-box;
+    -moz-box-sizing:border-box;
+    width: 175px !important;
+}
 input[type = "text"] {
     font-size:30.97px;
 }

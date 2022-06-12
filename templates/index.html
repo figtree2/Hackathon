@@ -20,6 +20,12 @@
         </ul>
         <div class="centerMap">
             <div id="map"></div>
+            <div id="entCoords">
+                <form onsubmit="return process();">
+                    <label for="coordinates">Enter coordinates</label>
+                    <input type="text" id="coordinates" name="coordinates">
+                </form>
+            </div>
         </div>
         <h1>Posts</h1>
         <div class = "post">
@@ -38,7 +44,7 @@
               </form>
         </div>
     
-        <script src = "../static/js/index.js"></script>
+        <script type="text/javascript" src="../static/js/index.js"></script>
     </div>
     
 </body>
