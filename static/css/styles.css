@@ -17,14 +17,14 @@
 }
 
 #map {
-    height: 400px;
+    height: 600px;
     /* The height is 400 pixels */
     width: 100%;
 }
 ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 5px;
+    padding: 0px;
     overflow: hidden;
     background-color: rgb(46, 13, 122);
 }
