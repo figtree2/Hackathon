@@ -9,12 +9,13 @@ import pathlib
 import uuid
 import pymongo
 from pymongo import MongoClient
+
 app = Flask('app')
 app.config['SESSION_TYPE'] = 's e c r e t'
 app.secret_key = 's e c r e t'
 
-cluster = MongoClient("mongodb+srv://figtree:1234@cluster0.j0ptd.mongodb.net/?retryWrites=true&w=majority")
-db = cluster["Cluster0"]
+cluster = pymongo.MongoClient("mongodb+srv://figtree:Jiarong0328@cluster0.j0ptd.mongodb.net/?retryWrites=true&w=majority")
+db = cluster["Posts"]
 collection = db["Posts"]
 
 #allow oauth without secure website
@@ -44,7 +45,7 @@ def index():
     if request.method == "POST":
         post_title = request.form.get("postTitle")
         post_content = request.form.get("postContent")
-        post = {"title": post_title, "content": post_content}
+        post = {"_id": str(uuid.uuid4()), "title": post_title, "content": post_content}
         collection.insert_one(post)
     return render_template("index.html")
 
