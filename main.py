@@ -53,6 +53,10 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route("/posts.html")
+def posts():
+    return render_template("posts.html")
+
 @app.route("/login.html")
 def login():
     return render_template("login.html")
