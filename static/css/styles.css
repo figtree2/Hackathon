@@ -67,56 +67,60 @@ ri a{
     text-decoration: none;
 }
 ri a:hover {
-    background-color: blue;
-}
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    background-color: #2b43ad;
 }
 li a:hover {
-    background-color: #3047b0;
+  background-color: #2b43ad;
 }
 body {
-    color: white;
-    font-family:sans-serif;
-    background-color: #304b70;
+  color: white;
+  font-family:sans-serif;
 }
 h1 {
-    color: white;
+  color: white;
 }
 p {
-    color: white;
+  color: white;
 }
 .active {
-    background-color: rgb(161, 161, 201);
+  background-color: #3957db;
 }
 .aboutText {
-    display: block;
-    padding-top: 20px;
-    padding-left: 20%;
-    padding-right: 20%;
-    text-align: center;
-    font-size: 150%;
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+  font-size: 150%;
+  background: rgba(0,0,0,.4);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
 }
 .aboutImage {
-    width: 320px;
-    height: 400px;
+  width: 320px;
+  height: 400px;
 }
 .aboutSomeone {
-    padding: 0px;
-    vertical-align: top;
-    display: inline-block;
-    text-align: center;
-    width: 320px;
-    font-size: 20px;
+  padding-top: 30px;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 360px;
+  font-size: 20px;
+}
+.aboutSomeone:hover {
+  background: rgba(0,0,0,.7);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
 }
 .aboutUs {
-    padding-top: 50px;
-    text-align: center;
+  padding-top: 50px;
+  text-align: center;
 }
+
 
 body {
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #FFE600, #8F00FF);
