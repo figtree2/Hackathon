@@ -11,12 +11,16 @@
 .post{
     margin: auto;
     width: 30%; 
-    padding: 4px;
+    padding: 10px;
     text-align: center;
+    background-color: white;
+    border: black solid 1px;
+    border-radius: 15px;
+    
 }
 
 input[type = "text"] {
-    font-size:30.97px;
+    font-size:25px;
 }
 
 #map {
