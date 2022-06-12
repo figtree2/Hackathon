@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +8,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-    <ul>
-        <li><a href="/">Map</a></li>
-        <li><a class="active" href="posts.html">Posts</a></li>
-        <li><a href="about.html">About</a></li>
-        <ri><a href="login.html">Log In</a></ri>
-    </ul>
-    <div class="body">
+  <ul>
+    <li><a href="/">Map</a></li>
+    <li><a class="active" href="posts.html">Posts</a></li>
+    <li><a href="about.html">About</a></li>
+    <ri><a href="signup">Log In</a></ri>
+  </ul>
+  <div class="outside">
+    <div class="login-box">
       <h1>Posts</h1>
-    <div class = "post">
-        <form action="/" method="post" autocomplete="off">
-            <div class="mb-3">
+      <form action="/" method="post" autocomplete="off">
+        <div class="user-box">
+          <input type="text" type="postTitle" name="postTitle" id="postTitle" required>
+          <label for="postTitle">Post Title</label>
+        </div>
+
+        <p>Post Content</p>
+        <div class="user-box">
+          <textarea type="text" type="postContent" name="postContent" id="postContent" rows="5" cols="50" required></textarea>
+        </div>
+
+        <div class="user-box">
+          <input type="text" type="address" name="address" id="address" required>
+          <label for="address">Street Address</label>
+        </div>
+
+        <a href="#">
+          <input style="background: transparent; color: white; border: none;" type="submit" value="Post">
+        </a>
+        <!-- <div class="mb-3">
                 <h3>Post Title</h3>
               <label for="postTitle" class="form-label"></label>
               <input type="text" class="form-control form-control-lg" type="postTitle" id="postTitle" name = "postTitle" placeholder = "Post Title" cols="45"  >
@@ -28,9 +48,10 @@
               <label for="postContent" class="form-label"></label>
               <textarea class="form-control-lg" id="postContent" type="postContent" rows="5" placeholder = "Post Contents" name = "postContent" cols="50" ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <button type="submit" class="btn btn-primary">Submit</button> -->
+      </form>
     </div>
-    </div>
+  </div>
 </body>
+
 </html>

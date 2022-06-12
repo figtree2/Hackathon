@@ -14,10 +14,15 @@ app = Flask('app')
 app.config['SESSION_TYPE'] = 's e c r e t'
 app.secret_key = 's e c r e t'
 
-cluster = pymongo.MongoClient("mongodb+srv://figtree:Jiarong0328@cluster0.j0ptd.mongodb.net/?retryWrites=true&w=majority")
+cluster = pymongo.MongoClient("mongodb+srv://timotea:1234@cluster0.qfjdm.mongodb.net/?retryWrites=true&w=majority")
 db = cluster["Posts"]
 collection = db["Posts"]
 
+
+#geocoding header
+headers = {
+        'apiKey': "NjgyOWM2MjA4NGRiNGRhOTgxODQ1NjgxNGVkMGJkMmQ6NmM4ZDY5NjAtYjVmNS00M2VlLWIxZGUtZGYwZGNmNTgyZjk1"
+    }
 #allow oauth without secure website
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = "1"
 
@@ -40,13 +45,25 @@ def login_is_required(function):
     return wrapper
 
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         post_title = request.form.get("postTitle")
         post_content = request.form.get("postContent")
-        post = {"_id": str(uuid.uuid4()), "title": post_title, "content": post_content}
+        post_address = request.form.get("address")
+        url = "https://api.myptv.com/geocoding/v1/locations/by-address?street="
+        words = post_address.split()
+        url += words[0]
+        words.pop(0)
+        for word in words:
+            url += "%20" + word
+        response = requests.request("GET", url, headers=headers)
+        latitude = response.json()['locations'][0]['referencePosition']['latitude']
+        longitude = response.json()['locations'][0]['referencePosition']['longitude']
+        post = {"_id": str(uuid.uuid4()), "title": post_title, "content": post_content, "address": post_address, "latitude": latitude, "longitude": longitude}
         collection.insert_one(post)
+        return redirect('/posts.html')
     return render_template("index.html")
 
 @app.route("/about.html")
