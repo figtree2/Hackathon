@@ -16,7 +16,7 @@ const dir = ["S", "W"]
 
 function CenterMap(long, lat){
   map.getView().setCenter(ol.proj.fromLonLat([long, lat]));
-  map.getView().setZoom(16);
+  map.getView().setZoom(14);
 }
 
 function process(){
@@ -44,6 +44,6 @@ function process(){
     }
   }
   //var cArr = c.split(',');
-  CenterMap(parseInt(cArr[1]), parseInt(cArr[0]));
+  CenterMap(parseFloat(cArr[1]), parseFloat(cArr[0]));
   return false;
 }
