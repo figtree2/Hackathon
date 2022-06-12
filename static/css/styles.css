@@ -67,7 +67,7 @@ ri a{
     text-decoration: none;
 }
 ri a:hover {
-    background-color: blue;
+    background-color: #2b43ad;
 }
 li a {
     display: block;
