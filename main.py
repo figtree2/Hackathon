@@ -49,6 +49,30 @@ def login_is_required(function):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        address = request.form.get("address")
+        url = "https://api.myptv.com/geocoding/v1/locations/by-address?street="
+        words = address.split()
+        url += words.pop(0)
+        for word in words:
+            url += "%20" + word
+        response = requests.request("GET", url, headers=headers)
+        latitude = response.json()['locations'][0]['referencePosition']['latitude']
+        longitude = response.json()['locations'][0]['referencePosition']['longitude']
+        obj = []
+        for document in collection.find():
+            if (abs(document['latitude'] - latitude) < 0.2) and (abs(document['longitude'] - longitude) < 0.2):
+                thing = {"title": document['title'], "content": document['content'], "address": document['address']}
+                obj.append(thing)
+        return render_template("index.html", active=True, latitude=latitude, longitude=longitude, obj=obj)
+    return render_template("index.html")
+
+@app.route("/about.html")
+def about():
+    return render_template("about.html")
+
+@app.route("/posts.html", methods=["GET", "POST"])
+def posts():
+    if request.method == "POST":
         post_title = request.form.get("postTitle")
         post_content = request.form.get("postContent")
         post_address = request.form.get("address")
@@ -64,14 +88,6 @@ def index():
         post = {"_id": str(uuid.uuid4()), "title": post_title, "content": post_content, "address": post_address, "latitude": latitude, "longitude": longitude}
         collection.insert_one(post)
         return redirect('/posts.html')
-    return render_template("index.html")
-
-@app.route("/about.html")
-def about():
-    return render_template("about.html")
-
-@app.route("/posts.html")
-def posts():
     return render_template("posts.html")
 
 @app.route("/login.html")

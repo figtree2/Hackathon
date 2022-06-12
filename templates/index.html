@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
-    
+
     <title>Document</title>
 </head>
+
 <body>
-    <div class = "body"> 
+    <div class="body">
         <ul>
             <li><a class="active" href="/">Map</a></li>
             <li><a href="posts.html">Posts</a></li>
             <li><a href="about.html">About</a></li>
             <ri><a href="signup">Log In</a></ri>
         </ul>
+
         <div class="centerMap">
             <div id="map"></div>
             <div id="entCoords">
@@ -27,11 +31,24 @@
                 </form>
             </div>
         </div>
-        <script src = "../static/js/index.js"></script>
+
         <h1>Address</h1>
-        <label for="postTitle" class="form-label"></label>
-        <input type="text" class="form-control form-control-lg" type="postTitle" id="postTitle" name = "postTitle" placeholder = "Address" cols="45"  >
+        <form method="post" action="/" autocomplete="off">
+            <label for="address" class="form-label"></label>
+            <input type="text" class="form-control form-control-lg" type="address" id="address" name="address"
+                placeholder="Address" cols="45">
+        </form>
+
+        {% if active %}
+        <p>{{latitude}}</p>
+        <p>{{longitude}}</p>
+        {% for thing in obj %}
+        <p>{{thing}}</p>
+        {% endfor %}
+        {% endif %}
+        <script src="../static/js/index.js"></script>
     </div>
-    
+
 </body>
+
 </html>
