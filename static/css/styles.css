@@ -30,7 +30,7 @@ ul {
     margin: 5px;
     padding: 0px;
     overflow: hidden;
-    background-color: rgb(46, 13, 122);
+    background-color: #151f4a;
 }
   
 li {
@@ -57,18 +57,18 @@ li a {
     text-decoration: none;
 }
 li a:hover {
-    background-color: blue;
+    background-color: #3047b0;
 }
 body {
-    color: black;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: lightgray;
+    color: white;
+    font-family:sans-serif;
+    background-color: #304b70;
 }
 h1 {
-    color: black;
+    color: white;
 }
 p {
-    color: black;
+    color: white;
 }
 .aboutText {
     display: block;
