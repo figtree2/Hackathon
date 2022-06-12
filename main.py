@@ -39,12 +39,13 @@ def login_is_required(function):
     return wrapper
 
 
-@app.route("/", methods = ["POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
-    post_title = request.form.get("postTitle")
-    post_content = request.form.get("postContent")
-    post = {"title": post_title, "content": post_content}
-    collection.insert_one(post)
+    if request.method == "POST":
+        post_title = request.form.get("postTitle")
+        post_content = request.form.get("postContent")
+        post = {"title": post_title, "content": post_content}
+        collection.insert_one(post)
     return render_template("index.html")
 
 @app.route("/about.html")
