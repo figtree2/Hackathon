@@ -67,7 +67,14 @@ ri a{
     text-decoration: none;
 }
 ri a:hover {
-    background-color: #2b43ad;
+    background-color: blue;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 li a:hover {
   background-color: #2b43ad;
@@ -120,7 +127,6 @@ p {
   padding-top: 50px;
   text-align: center;
 }
-
 
 body {
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #FFE600, #8F00FF);
