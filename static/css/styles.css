@@ -69,10 +69,28 @@ p {
     color: blue;
 }
 .aboutText {
+    display: block;
     padding-top: 20px;
     padding-left: 300px;
     padding-right: 300px;
     text-align: center;
     font-size: 150%;
     font-family: sans-serif;
+}
+.aboutImage {
+    width: 320px;
+    height: 400px;
+}
+.aboutSomeone {
+    padding: 0px;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 320px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+.aboutUs {
+    padding-top: 150px;
+    text-align: center;
 }
