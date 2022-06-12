@@ -12,14 +12,30 @@ var map = new ol.Map({
   })
 });
 var c;
+const dir = ["S", "W"]
 function CenterMap(long, lat){
   map.getView().setCenter(ol.proj.fromLonLat([long, lat]));
   map.getView().setZoom(4);
 }
 function process(){
   c = document.getElementsByName("coordinates")[0].value;
+  var cArr = [];
   String(c);
-  var cArr = c.split(',');
+  var count = 0;
+  for (var i=0; i<c.length; i++){
+    if(c[i] == "°" && count == 0){
+      cArr.push(c.slice(0, i));
+      count=i;
+    }
+    else if(c[i] == "°"){
+      cArr.push(c.slice(count+4, i));
+    }
+    else if(dir.includes(c[i])){
+      var neg = "-"
+      cArr[cArr.length-1] = neg.concat(cArr[cArr.length-1]);
+    }
+  }
+  //var cArr = c.split(',');
   CenterMap(parseInt(cArr[1]), parseInt(cArr[0]));
   return false;
 }
