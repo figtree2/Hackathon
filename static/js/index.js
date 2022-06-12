@@ -13,7 +13,7 @@ var map = new ol.Map({
 });
 var c;
 function CenterMap(long, lat){
-  map.getView().setCenter(ol.proj.transform([long, lat], 'EPSG:4326', 'EPSG:3857'));
+  map.getView().setCenter(ol.proj.fromLonLat([long, lat]));
   map.getView().setZoom(4);
 }
 function process(){
