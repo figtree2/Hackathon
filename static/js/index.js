@@ -13,10 +13,12 @@ var map = new ol.Map({
 });
 var c;
 const dir = ["S", "W"]
+
 function CenterMap(long, lat){
   map.getView().setCenter(ol.proj.fromLonLat([long, lat]));
   map.getView().setZoom(16);
 }
+
 function process(){
   c = document.getElementsByName("coordinates")[0].value;
   var cArr = [];
