@@ -13,7 +13,7 @@
     <title>Document</title>
 </head>
 
-<body onload = "return createMarker();">
+<body onload = "return putMarker();">
     <div class="body">
         <ul>
             <li><a class="active" href="/">Home</a></li>
@@ -21,7 +21,7 @@
             <li><a href="about.html">About</a></li>
             <ri><a href="signup">Log In</a></ri>
         </ul>
-        <div class="centerMap">
+        <div class="centerMap" onload = "putMarker();">
             <div id="map"></div>
             <div id="entCoords">
                 <form onsubmit="return process();">

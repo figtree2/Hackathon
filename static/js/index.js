@@ -73,20 +73,13 @@ function address(){
   // CenterMap(longitude, latitude);
 }
 
-async function createMarker() {
-  await mongoose.connect('mongodb+srv://timotea:1234@cluster0.qfjdm.mongodb.net/?retryWrites=true&w=majority',{
-    keepAlive: true,
-  })
-  let posts = await form.findMany({}).toArray();
-  for(let i = 0; i < posts.length; i ++){
-    long = posts[i].longitude
-    lat = posts[i].latitude
-    var marker = new ol.Feature({
-      geometry: new ol.geom.Point(
-        ol.proj.fromLonLat([long, lat])
-      ),
-    });
-  }
+function createMarker(long, lat) {
+
+  var marker = new ol.Feature({
+    geometry: new ol.geom.Point(
+      ol.proj.fromLonLat([long, lat])
+    ),
+  });
   marker.set('style', createStyle('icon.png', undefined)); //someone upload icon to git
   var vectorSource = new ol.source.Vector({
     features: [marker]
@@ -95,4 +88,15 @@ async function createMarker() {
     source: vectorSource,
   });
   map.addLayer(markerVectorLayer);
+}
+async function putMarker(){
+  await mongoose.connect('mongodb+srv://timotea:1234@cluster0.qfjdm.mongodb.net/?retryWrites=true&w=majority',{
+    keepAlive: true,
+  })
+  let posts = await form.findMany({}).toArray();
+  for(let i = 0; i < posts.length; i ++){
+    long = posts[i].longitude
+    lat = posts[i].latitude
+    createMarker(long, lat);
+  }
 }
