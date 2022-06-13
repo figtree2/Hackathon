@@ -1,4 +1,6 @@
 
+const mongoose = require('mongoose');
+const form = require('./form');
 var map = new ol.Map({
   target: 'map',
   layers: [
@@ -11,6 +13,7 @@ var map = new ol.Map({
     center: ol.proj.fromLonLat([-98.57, 39.82]),
     zoom: 4
   })
+  
 });
 var c;
 const dir = ["S", "W"]
@@ -69,12 +72,20 @@ function address(){
   // CenterMap(longitude, latitude);
 }
 
-function createMarker(lat, long) {
-  var marker = new ol.Feature({
-    geometry: new ol.geom.Point(
-      ol.proj.fromLonLat([long, lat])
-    ),
-  });
+async function createMarker() {
+  await mongoose.connect('mongodb+srv://timotea:1234@cluster0.qfjdm.mongodb.net/?retryWrites=true&w=majority',{
+    keepAlive: true,
+  })
+  let posts = await form.findMany({}).toArray();
+  for(let i = 0; i < posts.length; i ++){
+    long = posts[i].longitude
+    lat = posts[i].latitude
+    var marker = new ol.Feature({
+      geometry: new ol.geom.Point(
+        ol.proj.fromLonLat([long, lat])
+      ),
+    });
+  }
   marker.set('style', createStyle('icon.png', undefined)); //someone upload icon to git
   var vectorSource = new ol.source.Vector({
     features: [marker]
