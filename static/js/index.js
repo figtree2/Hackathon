@@ -47,3 +47,19 @@ function process(){
   CenterMap(parseFloat(cArr[1]), parseFloat(cArr[0]));
   return false;
 }
+
+function createMarker(lat, long) {
+  var marker = new ol.Feature({
+    geometry: new ol.geom.Point(
+      ol.proj.fromLonLat([long, lat])
+    ),
+  });
+  marker.set('style', createStyle('icon.png', undefined)); //someone upload icon to git
+  var vectorSource = new ol.source.Vector({
+    features: [marker]
+  });
+  var markerVectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+  });
+  map.addLayer(markerVectorLayer);
+}
