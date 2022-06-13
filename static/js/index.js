@@ -21,7 +21,7 @@ const dir = ["S", "W"]
 
 function CenterMap(long, lat){
   map.getView().setCenter(ol.proj.fromLonLat([long, lat]));
-  map.getView().setZoom(4);
+  map.getView().setZoom(14);
 }
 
 function process(){
