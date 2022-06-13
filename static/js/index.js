@@ -54,15 +54,16 @@ function address(){
   c = document.getElementsByName("address")[0].value;
   String(c)
   let url = "https://api.myptv.com/geocoding/v1/locations/by-address?street="
-  fetch(url, {
-        method: "GET",
-        headers: { apiKey: "NjgyOWM2MjA4NGRiNGRhOTgxODQ1NjgxNGVkMGJkMmQ6NmM4ZDY5NjAtYjVmNS00M2VlLWIxZGUtZGYwZGNmNTgyZjk1", "Content-Type": "application/json" },
-    })
+  
   words = address.split()
   url += words.pop(0)
   for(word in words){
     url += "%20" + word
   }
+  fetch(url, {
+    method: "GET",
+    headers: { apiKey: "NjgyOWM2MjA4NGRiNGRhOTgxODQ1NjgxNGVkMGJkMmQ6NmM4ZDY5NjAtYjVmNS00M2VlLWIxZGUtZGYwZGNmNTgyZjk1", "Content-Type": "application/json" },
+})
   try{
     latitude = response.json()['locations'][0]['referencePosition']['latitude']
     longitude = response.json()['locations'][0]['referencePosition']['longitude']
