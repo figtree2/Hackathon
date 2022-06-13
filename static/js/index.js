@@ -1,3 +1,4 @@
+
 var map = new ol.Map({
   target: 'map',
   layers: [
@@ -43,7 +44,33 @@ function process(){
       }
     }
   }
+  
   //var cArr = c.split(',');
   CenterMap(parseFloat(cArr[1]), parseFloat(cArr[0]));
+  return false;
+}
+
+function address(methods = ["GET"]){
+  c = document.getElementsByName("address")[0].value;
+  String(c)
+  let url = "https://api.myptv.com/geocoding/v1/locations/by-address?street="
+  fetch(url, {
+        method: "GET",
+        headers: { apiKey: "NjgyOWM2MjA4NGRiNGRhOTgxODQ1NjgxNGVkMGJkMmQ6NmM4ZDY5NjAtYjVmNS00M2VlLWIxZGUtZGYwZGNmNTgyZjk1", "Content-Type": "application/json" },
+    })
+  words = address.split()
+  url += words.pop(0)
+  for(word in words){
+    url += "%20" + word
+  }
+  try{
+    latitude = response.json()['locations'][0]['referencePosition']['latitude']
+    longitude = response.json()['locations'][0]['referencePosition']['longitude']
+  }
+  catch(error){
+    return render_template('index.html', wrong=True)
+  }
+  
+  CenterMap(longitude, latitude);
   return false;
 }
