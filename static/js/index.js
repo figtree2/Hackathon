@@ -50,7 +50,7 @@ function process(){
   return false;
 }
 
-function address(methods = ["GET"]){
+function address(){
   c = document.getElementsByName("address")[0].value;
   String(c)
   let url = "https://api.myptv.com/geocoding/v1/locations/by-address?street="
@@ -71,7 +71,7 @@ function address(methods = ["GET"]){
     return render_template('index.html', wrong=True)
   }
   
-  CenterMap(longitude, latitude);
+  CenterMap(parseFloat(longtitude), parseFloat(latitude));
 }
 function createMarker(lat, long) {
   var marker = new ol.Feature({
