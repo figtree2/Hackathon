@@ -17,7 +17,7 @@ const dir = ["S", "W"]
 
 function CenterMap(long, lat){
   map.getView().setCenter(ol.proj.fromLonLat([long, lat]));
-  map.getView().setZoom(14);
+  map.getView().setZoom(4);
 }
 
 function process(){
@@ -72,5 +72,19 @@ function address(methods = ["GET"]){
   }
   
   CenterMap(longitude, latitude);
-  return false;
+}
+function createMarker(lat, long) {
+  var marker = new ol.Feature({
+    geometry: new ol.geom.Point(
+      ol.proj.fromLonLat([long, lat])
+    ),
+  });
+  marker.set('style', createStyle('icon.png', undefined)); //someone upload icon to git
+  var vectorSource = new ol.source.Vector({
+    features: [marker]
+  });
+  var markerVectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+  });
+  map.addLayer(markerVectorLayer);
 }
