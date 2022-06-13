@@ -80,7 +80,7 @@ function createMarker(long, lat) {
       ol.proj.fromLonLat([long, lat])
     ),
   });
-  marker.set('style', createStyle('icon.png', undefined)); //someone upload icon to git
+  marker.set('style', createStyle('marker.png', undefined)); //someone upload icon to git
   var vectorSource = new ol.source.Vector({
     features: [marker]
   });
