@@ -1,6 +1,5 @@
 
-const mongoose = require('mongoose');
-const form = require('./form');
+
 var map = new ol.Map({
   target: 'map',
   layers: [
@@ -15,6 +14,8 @@ var map = new ol.Map({
   })
   
 });
+const mongoose = require('mongoose');
+const form = require('./form');
 var c;
 const dir = ["S", "W"]
 
